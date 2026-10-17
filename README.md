@@ -1,2 +1,14 @@
-# anki_proj
-A project for converting vocabulary from study notes into Anki flashcards. Project for the university course - Programming in Python
+# README
+
+Проект по переносу лексики в карточки из конспектов
+
+На входе - конспекты в markdown со словариками
+На выходе - файлы-пакеты anki для импорта
+
+Работает с двумя папками, одна с заметками, другая - с итоговыми файлами anki
+
+Умеет сохранять состояние, неперезаписыват и не перечитывает сделанное
+
+## Техническое
+
+poetry, python 12
