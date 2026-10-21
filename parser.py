@@ -46,4 +46,5 @@ def parser(md_full_text):
                     list_of_translations.extend(block)
                     block = []
                     
-        print(list_of_translations) 
+        return list_of_translations
+
