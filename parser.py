@@ -30,6 +30,10 @@ def parser(md_full_text, file_name):
 
             line = line.strip()
 
+            if not line: # ищем именно отдельные блоки словаря, другое - уже отдельные блоки
+                block = []
+                continue
+
             if line.startswith("* ") and " - " in line:
                 word, translation = line[2:].split(" - ", 1)
 
