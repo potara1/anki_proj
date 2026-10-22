@@ -13,4 +13,3 @@ def note_generator(list_of_translations):
         notes.append(note)
 
     return notes
-

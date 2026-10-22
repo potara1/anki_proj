@@ -1,6 +1,15 @@
-def parser(md_full_text):
+def check_for_safe_footnotes(lines, file_name):
+    
+    if not lines[-1].strip():
+            print(
+                f"Конспект {file_name} оканчивается пустой строкой. Это может нарушить определение языков проектом"
+            )
+
+def parser(md_full_text, file_name):
 
     lines = md_full_text.readlines()
+
+    check_for_safe_footnotes(lines, file_name)
 
     if lines[-1].startswith('['):
         
@@ -8,21 +17,21 @@ def parser(md_full_text):
         number_of_languages = int(lines[-1][2]) #максимум 9, может потом улучшить обработку для безлимита
 
         for i in range(number_of_languages):
+
             language = lines[-1-i].split(': ')[-1].strip().lower()
             language_number = int(lines[-1-i].split(']')[0][2:])
             languages[language_number]=language
-
-        
 
         list_of_translations = []
         block = []
 
     
         for line in lines: #собираем переводы
+
             line = line.strip()
 
             if line.startswith("* ") and " - " in line:
-                word, translation = line[2:].split(" - ")    #потом добавить исключение для большего количества -
+                word, translation = line[2:].split(" - ", 1)
 
                 language_number = None
 
@@ -47,4 +56,3 @@ def parser(md_full_text):
                     block = []
                     
         return list_of_translations
-

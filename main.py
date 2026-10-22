@@ -20,7 +20,7 @@ for file in notes_directory.glob("*.md"):
     output_anki_file = deck_output_directory / f"{file.stem}.apkg" 
 
     with open(file, 'r') as opened_file:
-        translations = parser.parser(opened_file)
+        translations = parser.parser(opened_file, file.name)
 
     if not translations:
         continue
@@ -42,7 +42,4 @@ for file in notes_directory.glob("*.md"):
     file_control.update_exsiting_hash(file)
 
 
-
 file_control.check_for_lame_hashes(all_md_files)
-
-
